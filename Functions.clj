@@ -6,7 +6,6 @@
 
 (say-hello "Satan")
 
-
 (fn [] (println "Hello world"))
 
 (def hello-world-func (fn [] (println "Hello World")))
