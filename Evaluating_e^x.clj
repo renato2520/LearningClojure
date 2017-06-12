@@ -26,24 +26,20 @@
       acc
       (recur (dec cnt) (* acc cnt)))))
 
-(println ((fn [x n]
-            (loop [acc 0 n n]
-              (if (< n 1)
-                acc
-                (recur (+ acc (/
-                               ((fn [x n]
-                                  (loop [acc 1 n n]
-                                    (if (zero? n)
-                                      acc
-                                      (recur (* x acc) (dec n)))))
-                                x
-                                (- n 1))
-                               ((fn [x]
-                                  (loop [cnt n acc 1]
-                                    (if (zero? cnt)
-                                      acc
-                                      (recur (dec cnt) (* acc cnt)))))
-                                (- n 1))))
-                       (dec n)))))
-          20.0
-          10))
+(comment "
+(println (format \"%.4f\"
+                 ((fn [x n]
+                    (loop [acc 0 n n]
+                      (Iif (I< n 1)
+                        acc
+                        (recur (+ acc (/ ((fn [x n]
+                                            (loop [acc 1 n n]
+                                              (if (zero? n)
+                                                acc
+                                                (recur (* x acc) (dec n))))) x (- n 1))
+                                         ((fn factorial [n]
+                                            (loop [cnt n acc 1]
+                                              (if (zero? cnt)
+                                                acc
+                                                (recur (dec cnt) (* acc cnt))))) (- n 1)))) (dec n))))) 20.0 10)))
+")
